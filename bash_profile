@@ -11,11 +11,6 @@ bind "set completion-ignore-case ON"
 # don't need to press tab twice when more than one match
 bind "set show-all-if-ambiguous ON"
 
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
-# iTerm2 shell integration
-source ~/.iterm2_shell_integration.`basename $SHELL`
-
 # needed for rabbitmq-* 
 PATH=$PATH:/usr/local/sbin
 
