@@ -31,8 +31,8 @@ discard = checkout -- .        # discard changes in working directory
 unstage = reset HEAD --  # discard changes in staging area
 
 # logs
-l = log -20 --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-ll = log --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+l = log -20 --graph --pretty=format:'%Cred%h %C(cyan)%ad%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short
+ll = log --graph    --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 last = log -1
 hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short # more nice logs
 

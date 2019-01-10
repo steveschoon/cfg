@@ -4,6 +4,10 @@ export PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\]
 # Aliases
 alias ll='ls -lG'
 alias vs='open -n -a "Visual Studio"'
+alias wj='subl --project ~/Projects/workjournal/workjournal.sublime-project --new-window'
+alias vs='open -n /Applications/Visual\ Studio.app'
+alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias mvim='open /Applications/MacVim.app'
 
 # case-insensitive tab completion
 bind "set completion-ignore-case ON"
@@ -14,5 +18,12 @@ bind "set show-all-if-ambiguous ON"
 # needed for rabbitmq-* 
 PATH=$PATH:/usr/local/sbin
 
-# needed for Python installed via Homebrew
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+# Setting PATH for Python 3.6
+# The original version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+export PATH
+
+export PATH="$HOME/.fastlane/bin:$PATH"
+export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
+export PATH="~/.composer/vendor/bin:$PATH"
+
