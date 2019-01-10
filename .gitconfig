@@ -3,16 +3,32 @@
 	email = steve@commonthreadsoftware.com
 [core]
 	excludesfile = /Users/steve/.gitignore_global
-[difftool "sourcetree"]
+
+[diff]
+	tool = bc3
+[difftool]
+	prompt = false
+[difftool "bc3"]
 	cmd = "/usr/local/bin/bcomp $LOCAL $REMOTE "
 	path = 
-[mergetool "sourcetree"]
+[mergetool "bc3"]
 	cmd = /usr/local/bin/bcomp $LOCAL $REMOTE $BASE $MERGED
 	trustExitCode = true
 [filter "media"]
 	clean = git media clean %f
 	smudge = git media smudge %f
 	required = true
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[push]
+	default = simple
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 
 [alias]
 #ll = log -n 30 --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
@@ -22,6 +38,7 @@ aliases = config --get-regexp alias
 a = add
 s = status
 ci = commit
+
 co = checkout
 cb = checkout -b
 br = branch
@@ -37,7 +54,7 @@ last = log -1
 hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short # more nice logs
 
 # diff
-d = difftool
+dt = difftool
 
 # stash
 sta = stash
@@ -45,23 +62,3 @@ sl = stash list
 laststashed = stash apply stash@{0}   # apply last stashed item without removing from the stash
 slast = stash apply stash@{0}          # same as above
 
-[diff]
-	tool = bc3
-[difftool "diffmerge"]
-	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
-[merge]
-	tool = diffmerge
-[mergetool "diffmerge"]
-	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
-	trustExitCode = true
-[filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
-[push]
-	default = simple
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
